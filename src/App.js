@@ -14,6 +14,9 @@ class App extends React.Component {
           path="/"
           component={Home}
         />
+        <Route exact
+          path="/messagefeed"
+          component={PostMessageForm} />
         <Route
           exact
           path="/profile/:username"
