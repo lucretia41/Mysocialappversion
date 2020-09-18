@@ -1,35 +1,41 @@
 import React from "react";
 import Spinner from "react-spinkit";
-import { withAsyncAction } from "../../redux/HOCs";
-import "./LoginForm.css";
 
-class LoginForm extends React.Component {
+import "./UpdateUser.css";
+import DataService from "../../DataService";
+
+class UpdateUser extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      username: "",
-      password: ""
+      password: "",
+      about: "",
+      displayName: "",
     };
+    this.client = new DataService();
   }
 
-  handleLogin = e => {
-    e.preventDefault();
-    this.props.login(this.state);
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleUpdate = (e) => {
+    e.preventDefault();
+    this.client.updateUser(this.state).then((result) => {
+      console.log(result.data);
+    });
   };
 
   render() {
     const { loading, error } = this.props;
     return (
-      <div className="LoginForm">
-        <form id="login-form" onSubmit={this.handleLogin}>
-          <label htmlFor="username">Username</label>
+      <div className="UpdateUserForm">
+        <h2>Update userinfo</h2>
+        <form id="update-form" onSubmit={this.handleUpdate}>
+          <label htmlFor="username">Display Name</label>
           <input
             type="text"
-            name="username"
+            name="displayName"
             autoFocus
             required
             onChange={this.handleChange}
@@ -42,7 +48,7 @@ class LoginForm extends React.Component {
             onChange={this.handleChange}
           />
           <button type="submit" disabled={loading}>
-            Login
+            Update
           </button>
         </form>
         {loading && <Spinner name="circle" color="blue" />}
@@ -52,4 +58,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default withAsyncAction("auth", "login")(LoginForm);
+export default UpdateUser;
