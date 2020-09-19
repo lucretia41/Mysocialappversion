@@ -1,5 +1,5 @@
 import React from "react"
-import Menu from "../components/menu/Menu"
+import Menu from "./menu/Menu"
 import { userIsAuthenticated } from "../redux/HOCs"
 import PostMessageService from "../services/PostMessageService"
 
@@ -32,7 +32,7 @@ class PostMessage extends React.Component {
         return (
             <div className="Message">
                 < Menu />
-                <h3>POst Message</h3>
+                <h3>Post Message</h3>
                 <div className="postMessageForm">
                     <form className="postMessageFormForm" onSubmit={this.handleMessagePost}>
                         <input

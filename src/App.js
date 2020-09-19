@@ -21,7 +21,7 @@ class App extends React.Component {
           <Route exact path="/profile/:username" component={Profile} />
           <Route exact path="/messagefeed" component={MessageList} />
           <Route exact path="*" component={NotFound} />
-          <Route exact path="/postMessage" component={postMessage} />
+
         </Switch>
       </div>
 

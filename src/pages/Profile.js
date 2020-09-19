@@ -4,6 +4,7 @@ import DataService from "../services/DataService"
 import Menu from "../components/menu/Menu"
 
 
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +20,8 @@ class Profile extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+        localStorage.clear();
+        window.location.reload();
       });
   };
 
