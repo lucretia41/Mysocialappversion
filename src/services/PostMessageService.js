@@ -5,7 +5,7 @@ class PostMessageService {
     url = "https://socialapp-api.herokuapp.com",
     client = axios.create()
   ) {
-    this.url = url;
+    this.url = url + "messages";
     this.client = client;
   }
 
