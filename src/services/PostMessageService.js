@@ -9,10 +9,10 @@ class PostMessageService {
     this.client = client;
   }
 
-  postMessage(message) {
+  postMessage(text) {
     let loginData = JSON.parse(localStorage.getItem("login"));
 
-    return this.client.post(this.url + "/messages", message, {
+    return this.client.post(this.url + "/messages", {text}, {
       headers: {
         Authorization: `Bearer ${loginData.result.token}`,
       },
@@ -21,3 +21,4 @@ class PostMessageService {
 }
 
 export default PostMessageService
+
